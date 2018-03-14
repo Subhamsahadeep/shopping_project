@@ -3,7 +3,21 @@ session_start();
 if(!isset($_SESSION["uid"])){
 	header("location:index.php");
 }
+
+$tx_id = $_GET["tx"];
+$p_st = $_GET["st"];
+$amt = $_GET["amt"];
+$cc = $_GET["cc"];
+$cm = $_GET["cm"];
+
+if($_COOKIE["ta"] == $amt && $p_st == "Completed" && $cm == $_SESSION["uid"] ){
+    echo "Everything is Ok";
+}
+
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -47,7 +61,7 @@ if(!isset($_SESSION["uid"])){
 								<hr/>
 								<p>Hello <?php echo $_SESSION["name"]; ?>,
 								Your payment process is successfully completed & your Transaction id ::
-								XXX <br/> You can continue Shopping</P>
+								<b><?php echo $tx_id; ?></b></b> <br/> You can continue Shopping</P>
 								<a href="index.php" class="btn btn-success btn-lg" >Continue Shopping</a>
 						</div>
 						<div class="panel-footer"></div>
