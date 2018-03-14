@@ -222,6 +222,8 @@ if(isset($_POST["brand"])){
 					$total_sum = array_sum($price_array);
 					$total_amt = $total_amt + $total_sum;
 					
+					setcookie("ta",$total_amt,strtotime("+1 day"),"/","","",TRUE);
+					
 					if(isset($_POST["get_cart_product"])){
 						
 						echo"
@@ -270,7 +272,7 @@ if(isset($_POST["brand"])){
 				echo '
 				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 					  <input type="hidden" name="cmd" value="_cart">
-					  <input type="hidden" name="business" value="shoppingcart123456@mystore.com">
+					  <input type="hidden" name="business" value="shoppingcart1234567@mystore.com">
 					  <input type="hidden" name="upload" value="1">';
 					  
 					  $x=0;
@@ -290,8 +292,8 @@ if(isset($_POST["brand"])){
 						
 					 }
 					  echo '
-					  <input type="hidden" name="return" value="http://localhost:8181/shopping_project/payment_success.php"/>
-					  <input type="hidden" name="cancel_return" value="http://localhost:8181/shopping_project/cancel.php"/>
+					  <input type="hidden" name="return" value="http://auburn-pine.000webhostapp.com/payment_success.php"/>
+					  <input type="hidden" name="cancel_return" value="https://auburn-pine.000webhostapp.com/cancel.php"/>
 					  <input type="hidden" name="curency_code" value="USD"/>
 					  <input type="hidden" name="custom" value="'.$uid.'" />
 					  
